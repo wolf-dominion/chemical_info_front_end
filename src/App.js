@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  //const dataURL = "https://sheet.best/api/sheets/955ad1a5-948c-49c5-81f0-2f832fb1efbb"
-  //const [data, setData] = useState([]);
+  const dataURL = "https://sheet.best/api/sheets/955ad1a5-948c-49c5-81f0-2f832fb1efbb"
+  const userURL = 'https://api.randomuser.me/'
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
     
     useEffect(() => {
-      fetch('https://api.randomuser.me/')
+      fetch(dataURL)
         .then(res => {
           if(res.ok) {
             return res.json();
@@ -18,7 +18,7 @@ function App() {
           }
         })
         .then(res => {
-          setData(res.results[0]);
+          setData(res);
           setLoading(false);
         })
         .catch(error => {
@@ -32,7 +32,7 @@ return (
       {/* <button onClick={() => setData([...data, 'new element'])}>
         Click me
       </button> */}
-      {loading ? <div>...Loading</div> : <div>{data.name.first}</div>}
+      {/* {loading ? <div>...Loading</div> : <div>{data.name.first}</div>} */}
     </div>
   );
 }
