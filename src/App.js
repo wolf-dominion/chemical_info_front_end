@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 
 import Header from './components/Header'
+import ResultCard from './components/ResultCard';
 import './App.scss';
 
 
@@ -30,7 +31,11 @@ function App() {
   const [loadingData, setLoadingData] = useState(true);
   const [error, setError] = useState(null);
     
-    // useEffect(() => {
+     useEffect(() => {
+
+      setData(APIdata);
+      setLoadingData(false);
+
     //     fetch(dataURL)
     //     .then(res => {
     //       if(res.ok) {
@@ -46,11 +51,21 @@ function App() {
     //     .catch(error => {
     //       setError(error)
     //     })
-    // }, []);
+     }, []);
 
     const displayResults = () => {
       return data.map(item => {
         return <li>{item.name}</li>
+      })
+    }
+
+    const displayTestResults = () => {
+      return APIdata.map(item => {
+        return <ResultCard
+          className="card"
+          key={APIdata.indexOf(item)}
+          item={item}
+        />
       })
     }
 
@@ -62,8 +77,9 @@ return (
         <div id="site-container">
           <h1>Chemical Information Site</h1>
           {/* <h2>{loadingData ? null : `There are currently ${data.length} types of chemicals to be aware of.`}</h2> */}
-          <h2>This website provides an easy way to learn more about what these chemicals do and how to avoid exposure.</h2>
+          <h3>This website provides an easy way to learn more about what these chemicals do and how to avoid exposure.</h3>
           {/* {loadingData ? <div>...Loading Data</div> : <div>{displayResults()}</div>} */}
+          {loadingData ? <div>...Loading Data</div> : <div className="card-columns">{displayTestResults()}</div>}
         </div>
       </Router>
   );
