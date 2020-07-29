@@ -39,4 +39,17 @@
 
 #site-container {
   padding-left: 40px;
+  padding-top: 90px;
 }
+
+.card-columns {
+  padding-left: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin-right: 20px;
+}
+
+// *{ border: 1px solid red; }
