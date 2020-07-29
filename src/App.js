@@ -6,17 +6,26 @@ function App() {
   //const [data, setData] = useState([]);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
     
-    useEffect(async () => {
-      const response = await fetch('https://api.randomuser.me/');
-      const info = await response.json();
-      const item = info.results[0];
-      setData(item);
-      console.log(info.results[0].name.first)
-      setLoading(false);
-    }, [data, loading]);
+    useEffect(() => {
+      fetch('https://api.randomuser.me/')
+        .then(res => {
+          if(res.ok) {
+            return res.json();
+          } else {
+            throw Error("Error during fetch call")
+          }
+        })
+        .then(res => {
+          setData(res.results[0]);
+          setLoading(false);
+        })
+        .catch(error => {
+          setError(error)
+        })
+    }, []);
 
-  //const {data, loading} = useFetch();
 return (
     <div id="site-container">
       <h1>Chemical Information Site</h1>
