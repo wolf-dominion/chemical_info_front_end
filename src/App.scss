@@ -7,12 +7,6 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -39,6 +33,7 @@
 
 #site-container {
   padding-left: 40px;
+  padding-right: 40px;
   padding-top: 90px;
 }
 
@@ -50,6 +45,34 @@
 
 .card {
   margin-right: 20px;
+  max-height: 250px;
 }
 
+.card-text-summary {
+  max-height: 100px;
+  overflow: hidden;
+}
+.overlay {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  bottom: 0; left: 0;
+  background-image: linear-gradient(to bottom, transparent, white);
+  max-height: 170px;
+}
+
+
+
 // *{ border: 1px solid red; }
+
+.card-container.row {
+  background-color: rgb(216, 216, 216);
+  padding-top: 20px;
+}
+
+.sheet-container.row {
+  background-color: rgb(223, 235, 217);
+  padding-left: 30px;
+  margin-top: 10px;
+  padding-top: 20px;
+}

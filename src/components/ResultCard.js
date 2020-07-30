@@ -13,9 +13,10 @@ function ResultCard(props) {
             <Card style={{ width: '18rem' }}>
                 <Card.Body>
                     <Card.Title>{item.name}</Card.Title>
-                    <Card.Text>
+                    <Card.Text className="card-text-summary">
                         {item.summary}
                     </Card.Text>
+                    <div className="overlay"></div>
                     <Button onClick={handleClick} variant="primary">view full info</Button>
                 </Card.Body>
             </Card>

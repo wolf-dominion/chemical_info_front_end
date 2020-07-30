@@ -79,7 +79,12 @@ return (
           {/* <h2>{loadingData ? null : `There are currently ${data.length} types of chemicals to be aware of.`}</h2> */}
           <h3>This website provides an easy way to learn more about what these chemicals do and how to avoid exposure.</h3>
           {/* {loadingData ? <div>...Loading Data</div> : <div>{displayResults()}</div>} */}
-          {loadingData ? <div>...Loading Data</div> : <div className="card-columns">{displayTestResults()}</div>}
+          <div className="card-container row">
+            {loadingData ? <div>...Loading Data</div> : <div className="card-columns">{displayTestResults()}</div>}
+          </div>
+          <div className="sheet-container row">
+            <p>Full info sheet here</p>
+          </div>
         </div>
       </Router>
   );
