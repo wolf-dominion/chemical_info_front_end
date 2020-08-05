@@ -30,6 +30,7 @@ function App() {
   const [data, setData] = useState(null);
   const [loadingData, setLoadingData] = useState(true);
   const [error, setError] = useState(null);
+  const [displayFullInfo, setDisplayFullInfo] = useState("Click on 'view full info' to see data here.");
     
      useEffect(() => {
 
@@ -65,8 +66,22 @@ function App() {
           className="card"
           key={APIdata.indexOf(item)}
           item={item}
+          setDisplayFullInfo={setDisplayFullInfo}
         />
       })
+    }
+
+    const sheetContainer = () => {
+      return <div>
+        <h3>Summary:</h3>
+        <span>{displayFullInfo.summary}</span>
+        <h3>Exposure:</h3>
+        <span>{displayFullInfo.exposure}</span>
+        <h3>Affects:</h3>
+        <span>{displayFullInfo.effects}</span>
+        <h3>Levels:</h3>
+        <span>{displayFullInfo.levels}</span>
+      </div>
     }
 
 return (
@@ -80,10 +95,17 @@ return (
           <h3>This website provides an easy way to learn more about what these chemicals do and how to avoid exposure.</h3>
           {/* {loadingData ? <div>...Loading Data</div> : <div>{displayResults()}</div>} */}
           <div className="card-container row">
-            {loadingData ? <div>...Loading Data</div> : <div className="card-columns">{displayTestResults()}</div>}
+            {loadingData ? 
+              <div>...Loading Data</div> : 
+              <div className="card-columns">
+                {displayTestResults()}
+              </div>}
           </div>
           <div className="sheet-container row">
-            <p>Full info sheet here</p>
+            {displayFullInfo === "Click on 'view full info' to see data here." ? 
+                    displayFullInfo : 
+                    sheetContainer()
+            }
           </div>
         </div>
       </Router>

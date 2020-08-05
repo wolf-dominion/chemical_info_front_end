@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import { Button, Card } from "react-bootstrap";
 
 function ResultCard(props) {
-    const {item} = props
+    const {item, setDisplayFullInfo} = props
+    console.log(setDisplayFullInfo)
 
     const handleClick = () => {
         console.log('I was clicked')
+        setDisplayFullInfo(item)
     }
 
     return(
