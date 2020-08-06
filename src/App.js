@@ -5,6 +5,9 @@ import Header from './components/Header'
 import ResultCard from './components/ResultCard';
 import './App.scss';
 
+import Carousel, { slidesToShowPlugin } from '@brainhubeu/react-carousel';
+import '@brainhubeu/react-carousel/lib/style.css';
+
 
 function App() {
   const APIdata = 
@@ -106,6 +109,24 @@ return (
                     displayFullInfo : 
                     sheetContainer()
             }
+          </div>
+          <div>
+          <Carousel
+            plugins={[
+              'infinite',
+              'arrows',
+              {
+                resolve: slidesToShowPlugin,
+                options: {
+                numberOfSlides: 2
+                }
+              },
+            ]}
+          >
+            <img src={'https://picsum.photos/200/300'} />
+            <img src={'https://picsum.photos/id/237/200/300'} />
+            <img src={'https://picsum.photos/200/300'} />
+          </Carousel>
           </div>
         </div>
       </Router>
